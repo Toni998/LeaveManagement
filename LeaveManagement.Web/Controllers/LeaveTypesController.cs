@@ -10,9 +10,12 @@ using LeaveManagement.Web.Models;
 using LeaveManagement.Web.Models.Dtos;
 using AutoMapper;
 using LeaveManagement.Web.Contracts;
+using Microsoft.AspNetCore.Authorization;
+using LeaveManagement.Web.Contants;
 
 namespace LeaveManagement.Web.Controllers
 {
+    [Authorize(Roles =Roles.Administrator)]
     public class LeaveTypesController : Controller
     {
         private readonly ILeaveTypeRepository _repository;
@@ -50,6 +53,7 @@ namespace LeaveManagement.Web.Controllers
             return View(leaveTypeDto);
         }
 
+        
         // GET: LeaveTypes/Create
         public IActionResult Create()
         {
@@ -59,6 +63,7 @@ namespace LeaveManagement.Web.Controllers
         // POST: LeaveTypes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create( LeaveTypeDto leaveTypeDto)
@@ -75,6 +80,7 @@ namespace LeaveManagement.Web.Controllers
             return View(leaveTypeDto);
         }
 
+        
         // GET: LeaveTypes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -91,6 +97,7 @@ namespace LeaveManagement.Web.Controllers
         // POST: LeaveTypes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, LeaveTypeDto leaveTypeDto)
@@ -124,8 +131,8 @@ namespace LeaveManagement.Web.Controllers
             return View(leaveTypeDto);
         }
 
-        
 
+        
         // POST: LeaveTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
