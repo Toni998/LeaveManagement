@@ -23,6 +23,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //registring repositories 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositroy<>)); 
 builder.Services.AddScoped<ILeaveTypeRepository, LeaveTypeRepository>();
+builder.Services.AddScoped<ILeaveAllocationRepository, LeaveAllocationRepository>();
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

@@ -9,6 +9,8 @@
 
         Task<T?> GetAsync(int? id);
 
+        Task AddRangeAysnc(List<T> entities);
+
         Task<bool> Exists(int? id);
     }
 }

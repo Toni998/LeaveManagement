@@ -37,7 +37,8 @@
                 <a asp-action="Edit" class="btn btn-primary" asp-route-id="@item.Id">Edit</a> 
                 <a asp-action="Details" class="btn btn-success" asp-route-id="@item.Id">Details</a> 
 @*<a asp-action="Delete" class="btn btn-danger deleteBtn"  asp-route-id="@item.Id">Delete</a> *@
-                <button data-id = "@item.Id" class="btn btn-danger deleteBtn" type="button">Delete</button>
+                <button data-id = "@item.Id" class="btn btn-success allocateBtn" type="button">Allocate leave</button>
+                 <button data-id = "@item.Id" class="btn btn-danger allocateBtn" type="button">Delete</button>
             </td>
         </tr>
 }
@@ -47,12 +48,17 @@
 <form id="deleteForm" asp-action="Delete">
     <input type="hidden" id="leaveTypeId" name="Id" />
 </form>
+<form id="allocateForm" asp-action="AllocateLeave">
+    <input type="hidden" id="leaveAllocationId" name="Id" />
+</form>
+
+
 
 @section Scripts {
     <script>
         $(function(){ 
 
-            $('.table').DataTable();
+            
 
 
 
@@ -70,6 +76,26 @@
                         var id = btn.data("id");
                         $('#leaveTypeId').val(id);
                         $('#deleteForm').submit();
+                    }
+                });
+            }); 
+
+
+
+            //alocate button
+            $('.allocateBtn').click(function(e) {
+                swal({
+                    title : 'Are you sure?',
+                    text : 'Are you sure you want to Allocate this leave to all employees ? ',
+                    icon : 'warning',
+                    dangerMode : true,
+                    buttons : true
+                }).then((confirm) => {
+                    if(confirm) {
+                        var btn = $(this);
+                        var id = btn.data("id");
+                        $('#leaveAllocationId').val(id);
+                        $('#allocateForm').submit();
                     }
                 });
             }); 

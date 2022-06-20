@@ -12,7 +12,11 @@ namespace LeaveManagement.Web.Models
         public LeaveType? LeaveType { get; set; }
         public int LeaveTypeId { get; set; }
 
-       
-        
+        //number of days for leave 
+        public int Period { get; set; }
+
+
+
+
     }
 }

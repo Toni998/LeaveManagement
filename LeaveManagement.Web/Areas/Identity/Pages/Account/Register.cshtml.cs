@@ -88,9 +88,13 @@ namespace LeaveManagement.Web.Areas.Identity.Pages.Account
             [Display (Name ="Last Name")]
             [Required]
             public string LastName { get; set; }
+
+                
             [DataType(DataType.Date)]
             [Display (Name ="Date of birth")]
             public DateTime? DateOfBirth { get; set; }
+
+
             [DataType(DataType.Date)]
             [Display(Name ="Date joined ")]
             public DateTime? DateJoined { get; set; }
