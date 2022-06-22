@@ -11,6 +11,8 @@ namespace LeaveManagement.Web.Contracts
 
         Task<EmployeeAllocationDto> GetAllocationAsync(string id);
 
+        Task<LeaveAllocation?> GetAllocationAsync(string employeeId, int leaveTypeId);
+
         Task<LeaveAllocationEditDto> GetEmployeeAllocationAsync(int id);
     }
 }
